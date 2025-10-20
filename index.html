@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conciencia Ambiental</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f8e9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #2e7d32, #66bb6a);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.8em;
+    }
+    nav {
+      background: #388e3c;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2e7d32;
+    }
+    .card {
+      background: white;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    footer {
+      background: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, select, button {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2e7d32;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+    .oculto {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌱 Conciencia Ambiental</h1>
+    <p>Cuidemos nuestro planeta, es el único hogar que tenemos</p>
+  </header>
+
+  <nav>
+    <a href="#registro">Registro</a>
+    <a href="#contaminacion">Contaminación</a>
+     <a href="#tapa">conciencia en tapachula</a>
+    <a href="#acciones">Acciones</a>
+    <a href="#importancia">importancia</a>
+    <a href="#Ideas Para Reciclar">Ideas Para Reciclar</a>
+   
+  </nav>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <section id="registro">
+    <div class="card">
+      <h2>Registro de Visitantes 🌍</h2>
+      <form id="registroForm">
+        <label>Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label>¿De dónde nos visitas?</label>
+        <select id="facultad" required>
+          <option value="">Seleccione una opción</option>
+          <option>Facultad de Negocios</option>
+          <option>Facultad de Administración</option>
+          <option>Facultad de Lenguas</option>
+          <option>Facultad de Ciencias Químicas</option>
+          <option>Otros</option>
+        </select>
+
+        <label>Tipo de basura depositada:</label>
+        <select id="basura">
+          <option>Plástico</option>
+          <option>Papel</option>
+          <option>Metal</option>
+          <option>Orgánico</option>
+        </select>
+
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SECCIONES EDUCATIVAS + GRÁFICA -->
+  <section id="infoSecciones" class="oculto">
+    <!-- SECCIÓN CONTAMINACIÓN -->
+    <div class="card" id="contaminacion">
+      <h2>🌍 Contaminación</h2>
+      <p>La contaminación es uno de los mayores problemas ambientales actuales. 
+      Los desechos mal manejados contaminan el aire, el agua y el suelo, afectando la salud de millones de personas.</p>
+      <ul>
+        <li>La contaminación siempre tiene un impacto negativo en la salud humana, en las plantas y en los animales. En ocasiones ese mal es inmediato y muy perjudicial.</li>
+        <li>A largo plazo, la contaminación atmosférica provocada por los la contaminación de los motores de los vehículos provoca problemas en la respiración
+             (como el asma o picores de garganta) o irritación de la piel, con el paso de los años una persona puede desarrollar otras dolencias más importantes.</li>
+      </ul>
+    </div>
+
+     <!-- SECCIÓN tapa -->
+    <div class="card" id="tapa">
+      <h2>  consecuencias en tapachula</h2>
+      <ul>
+        <li>Tapachula sufren un riesgo constante de inundación por los taponamientos de las alcantarillas producto de los residuos sólidos que las personas tiran en la calle sin ningún escrúpulo, 
+            esos mismos residuos, aparte de generar un riesgo de inundación, también crea una fuente de contaminación que se va directo a los ríos y al mar</li>
+        <li>La acumulación descontrolada de residuos ha generado una crisis insostenible: proliferación de enfermedades,
+             contaminación de agua y suelo, además de la emisión constante de gases tóxicos</li>
+
+        <li>La recolección de basura es una de las tareas de las autoridades municipales, pero al parecer, no les importa,
+             porque en lugar de buscar una solución cada día es más grave este asunto y no se ve que quieran resolverlo.</li>
+        <li>Muchas personas dicen que el futuro es incierto, pero científicamente podemos predecir cómo será el mundo dentro de unos años, no es muy arriesgado aventurarnos en decir que el planeta está cambiando a una gran velocidad 
+            y la mayoría de estos cambios nos van a traer desastres medioambientales de dimensiones nunca vistas hasta la fecha..</li>
+      </ul>
+    </div>
+
+     <!-- SECCIÓN MEJORAR -->
+    <div class="card" id="acciones">
+      <h2>🌟 Acciones</h2>
+      <p>Aunque cada acción cuenta, aún podemos hacer más para cuidar el medio ambiente:</p>
+      <ul>
+        <li>Reducir el consumo de plásticos de un solo uso.</li>
+        <li>Disminuir al máximo el uso del automóvil y la motocicleta; preferir caminar, usar bicicleta o el transporte público.
+             Esto reduce la contaminación pero también mejora la salud al mantenernos activos.</li>
+        <li>Emplear el agua y la energía de manera racional y eficiente. Si es viable,
+             instalar paneles solares y sistemas de calentamiento solar de agua.</li>
+        <li>Es importante modificar nuestros hábitos de consumo: evitar o disminuir los productos plásticos de un solo uso o empaquetados.
+             y separarlos para facilitar su reciclaje, y no quemar basura ni otros desechos.</li>
+        <li>Educar a más personas sobre la importancia de la conciencia ambiental.</li>
+      </ul>
+    </div>
+    
+    <!-- SECCIÓN IMPORTANCIA -->
+    <div class="card" id="importancia">
+      <h2>♻ Importancia del Reciclaje</h2>
+      <p>Reciclar no es solo separar basura: es un compromiso con el futuro. 
+      Con cada residuo reciclado reducimos la explotación de recursos naturales y alargamos la vida útil de los materiales.</p>
+      <ul>
+        <li>Reciclando, le damos un nuevo uso a objetos destinados a convertirse en residuos y ayudamos a nuestro planeta, 
+            así como también protegemos a las generaciones futuras. </li>
+            <li>Los residuos sólidos pueden ser vendidos a empresas que los reciclan, se ahorran costos en el hogar utilizando materiales reciclados.
+                 Se pueden crear diferentes artículos hechos de material reciclado.</li>
+            <li>Disminución de residuos sólidos, incremento de la calidad del suelo, reducción de la emisión de gases de efecto invernadero; 
+                mejora de la calidad de aire y ayuda a estabilización del clima.</li>
+        <li>Reutilizar plásticos reduce la contaminación en ríos y mares.</li>
+        <li>Separar residuos orgánicos permite producir composta y fertilizar suelos.</li>
+      </ul>
+    </div>
+
+    <!-- SECCIÓN QUE HACER CON LA BASURA -->
+    <div class="card" id="Ideas Para Reciclar">
+      <h2>Ideas Para Reciclar </h2>
+      
+      <p>Convertir la basura en algo útil:</p>
+      <ul>
+        <li>El reciclaje de basura orgánica consiste en transformar estos residuos para hacer abono para las plantas,
+          como las cáscaras de las frutas y hortalizas o los restos de comida, son totalmente aprovechables por su proceso natural y rápido de descomposición.
+        </li>
+        <li>Son muchas las botellas de plástico que utilizamos a lo largo del día que pueden
+           ser transformadas en una regadera, un comedero para nuestras mascotas, crear adornos con ellas y  maceteros donde plantar.
+        </li>
+        <li>La ropa vieja puede convertirse en cobijas, juguetes para mascotas y bolsas.</li>
+        <li>Las latas de aluminio pueden transformarse en macetas, porta lápices, soportes para cubiertos o incluso en decoración pintada.</li>
+      </ul>
+    </div>
+
+
+
+    <!-- GRÁFICA -->
+    <div class="card" id="graficaSection">
+      <h2>📊 Gráfica de Basura Depositada</h2>
+      <canvas id="graficaBasura" width="400" height="200"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Conciencia Ambiental | Cuidemos la Tierra  🌎</p>
+  </footer>
+ <!-- ✅ Código correcto con Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+
+  // 🔥 Configuración de Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyC8gD1JMSxJgAJC4WQLBpHIMzCsTScfRKk",
+    authDomain: "ambiental-9be8d.firebaseapp.com",
+    projectId: "ambiental-9be8d",
+    storageBucket: "ambiental-9be8d.firebasestorage.app",
+    messagingSenderId: "453761358527",
+    appId: "1:453761358527:web:c8e643498d48f146a9040a",
+    measurementId: "G-68WKC8DRLY"
+  };
+
+  // Inicializar Firebase y base de datos
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Variables globales
+  const datosBasura = { Plástico: 0, Papel: 0, Metal: 0, Orgánico: 0 };
+  let grafica = null;
+  const infoSecciones = document.getElementById("infoSecciones");
+
+  // Escuchar cambios en la base
+  const basuraRef = ref(db, "basura");
+  onValue(basuraRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      Object.assign(datosBasura, data);
+      actualizarGrafica();
+    }
+  });
+
+  // Registrar persona
+  document.getElementById("registroForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("nombre").value;
+    const facultad = document.getElementById("facultad").value;
+    const basura = document.getElementById("basura").value;
+
+    // Guardar persona en la base
+    push(ref(db, "personas"), {
+      nombre,
+      facultad,
+      basura,
+      fecha: new Date().toLocaleString()
+    });
+
+    // Actualizar contador de basura
+    datosBasura[basura]++;
+    set(ref(db, "basura"), datosBasura);
+
+    infoSecciones.classList.remove("oculto");
+    actualizarGrafica();
+    e.target.reset();
+  });
+
+  // Crear o actualizar la gráfica
+  function actualizarGrafica() {
+    const ctx = document.getElementById("graficaBasura").getContext("2d");
+    if (!grafica) {
+      grafica = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: Object.keys(datosBasura),
+          datasets: [{
+            label: "Cantidad de basura depositada",
+            data: Object.values(datosBasura),
+            backgroundColor: ["#42a5f5","#ffeb3b","#9e9e9e","#66bb6a"]
+          }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+      });
+    } else {
+      grafica.data.datasets[0].data = Object.values(datosBasura);
+      grafica.update();
+    }
+  }
+</script>
