@@ -133,6 +133,7 @@
     <!-- SECCIÓN CONTAMINACIÓN -->
     <div class="card" id="contaminacion">
       <h2>🌍 Contaminación</h2>
+      <img src="imagen.jpeg" width="250px" height="259px">
       <p>La contaminación es uno de los mayores problemas ambientales actuales. 
       Los desechos mal manejados contaminan el aire, el agua y el suelo, afectando la salud de millones de personas.</p>
       <ul>
@@ -161,6 +162,7 @@
      <!-- SECCIÓN MEJORAR -->
     <div class="card" id="acciones">
       <h2>🌟 Acciones</h2>
+      <img src="img" width="250px" height="259px">
       <p>Aunque cada acción cuenta, aún podemos hacer más para cuidar el medio ambiente:</p>
       <ul>
         <li>Reducir el consumo de plásticos de un solo uso.</li>
@@ -177,6 +179,7 @@
     <!-- SECCIÓN IMPORTANCIA -->
     <div class="card" id="importancia">
       <h2>♻ Importancia del Reciclaje</h2>
+      <img src="cuidado.jpeg" width="250px" height="259px">
       <p>Reciclar no es solo separar basura: es un compromiso con el futuro. 
       Con cada residuo reciclado reducimos la explotación de recursos naturales y alargamos la vida útil de los materiales.</p>
       <ul>
@@ -193,7 +196,7 @@
 
     <!-- SECCIÓN QUE HACER CON LA BASURA -->
     <div class="card" id="Ideas Para Reciclar">
-      <h2>Ideas Para Reciclar </h2>
+      <h2>Ideas Para Reciclar</h2>
       
       <p>Convertir la basura en algo útil:</p>
       <ul>
@@ -220,84 +223,85 @@
   <footer>
     <p>© 2025 Conciencia Ambiental | Cuidemos la Tierra  🌎</p>
   </footer>
- <!-- ✅ Código correcto con Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
 
-  // 🔥 Configuración de Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyC8gD1JMSxJgAJC4WQLBpHIMzCsTScfRKk",
-    authDomain: "ambiental-9be8d.firebaseapp.com",
-    projectId: "ambiental-9be8d",
-    storageBucket: "ambiental-9be8d.firebasestorage.app",
-    messagingSenderId: "453761358527",
-    appId: "1:453761358527:web:c8e643498d48f146a9040a",
-    measurementId: "G-68WKC8DRLY"
-  };
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
-  // Inicializar Firebase y base de datos
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+// Configuración Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyC8gD1JMSxJgAJC4WQLBpHIMzCsTScfRKk",
+  authDomain: "ambiental-9be8d.firebaseapp.com",
+  databaseURL: "https://ambiental-9be8d-default-rtdb.firebaseio.com",
+  projectId: "ambiental-9be8d",
+  storageBucket: "ambiental-9be8d.firebasestorage.app",
+  messagingSenderId: "453761358527",
+  appId: "1:453761358527:web:c8e643498d48f146a9040a",
+  measurementId: "G-68WKC8DRLY"
+};
 
-  // Variables globales
-  const datosBasura = { Plástico: 0, Papel: 0, Metal: 0, Orgánico: 0 };
-  let grafica = null;
-  const infoSecciones = document.getElementById("infoSecciones");
+// Inicializar app y DB
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-  // Escuchar cambios en la base
-  const basuraRef = ref(db, "basura");
-  onValue(basuraRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      Object.assign(datosBasura, data);
-      actualizarGrafica();
-    }
-  });
+// Variables globales
+const datosBasura = { Plástico: 0, Papel: 0, Metal: 0, Orgánico: 0 };
+let grafica = null;
+const infoSecciones = document.getElementById("infoSecciones");
 
-  // Registrar persona
-  document.getElementById("registroForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const nombre = document.getElementById("nombre").value;
-    const facultad = document.getElementById("facultad").value;
-    const basura = document.getElementById("basura").value;
-
-    // Guardar persona en la base
-    push(ref(db, "personas"), {
-      nombre,
-      facultad,
-      basura,
-      fecha: new Date().toLocaleString()
-    });
-
-    // Actualizar contador de basura
-    datosBasura[basura]++;
-    set(ref(db, "basura"), datosBasura);
-
-    infoSecciones.classList.remove("oculto");
+// Cargar datos existentes de la base
+const basuraRef = ref(db, "basura");
+onValue(basuraRef, (snapshot) => {
+  const data = snapshot.val();
+  if (data) {
+    Object.assign(datosBasura, data);
     actualizarGrafica();
-    e.target.reset();
+  }
+});
+
+// Registrar visitante
+document.getElementById("registroForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  const facultad = document.getElementById("facultad").value;
+  const basura = document.getElementById("basura").value;
+
+  // Guardar persona
+  push(ref(db, "personas"), {
+    nombre,
+    facultad,
+    basura,
+    fecha: new Date().toLocaleString()
   });
 
-  // Crear o actualizar la gráfica
-  function actualizarGrafica() {
-    const ctx = document.getElementById("graficaBasura").getContext("2d");
-    if (!grafica) {
-      grafica = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: Object.keys(datosBasura),
-          datasets: [{
-            label: "Cantidad de basura depositada",
-            data: Object.values(datosBasura),
-            backgroundColor: ["#42a5f5","#ffeb3b","#9e9e9e","#66bb6a"]
-          }]
-        },
-        options: { scales: { y: { beginAtZero: true } } }
-      });
-    } else {
-      grafica.data.datasets[0].data = Object.values(datosBasura);
-      grafica.update();
-    }
+  // Actualizar contador
+  datosBasura[basura]++;
+  set(ref(db, "basura"), datosBasura);
+
+  infoSecciones.classList.remove("oculto");
+  actualizarGrafica();
+  e.target.reset();
+});
+
+// Crear o actualizar la gráfica
+function actualizarGrafica() {
+  const ctx = document.getElementById("graficaBasura").getContext("2d");
+  if (!grafica) {
+    grafica = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: Object.keys(datosBasura),
+        datasets: [{
+          label: "Cantidad de basura depositada",
+          data: Object.values(datosBasura),
+          backgroundColor: ["#42a5f5","#ffeb3b","#9e9e9e","#66bb6a"]
+        }]
+      },
+      options: { scales: { y: { beginAtZero: true } } }
+    });
+  } else {
+    grafica.data.datasets[0].data = Object.values(datosBasura);
+    grafica.update();
   }
+}
 </script>
